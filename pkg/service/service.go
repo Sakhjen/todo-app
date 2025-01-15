@@ -17,6 +17,6 @@ type Service struct {
 	TodoItem
 }
 
-func NewService(repository *Repository) *Service {
+func NewService(repository *repository.Repository) *Service {
 	return &Service{}
 }
