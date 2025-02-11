@@ -1,0 +1,21 @@
+services:
+
+  todo_postgres:
+    container_name: todo_postgres
+    hostname: todo_postgres
+#    image: postgres:16.3-alpine3.20
+    image: postgres:15.6-bullseye
+    environment:
+      POSTGRES_USER: todo_user
+      POSTGRES_PASSWORD: todo_password
+      POSTGRES_DB: todo_postgres
+      POSTGRES_INITDB_ARGS: "--encoding=UTF-8"
+    ports:
+      - "5436:5432"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U todo_user -d todo_postgres" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: unless-stopped
