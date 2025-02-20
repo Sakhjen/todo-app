@@ -25,7 +25,7 @@ CREATE TABLE todo_items
     id serial NOT NULL UNIQUE,
     title varchar(255) NOT NULL,
     description varchar(255),
-    list_id int REFERENCES todo_lists (id) on delete CASCADE NOT NULL
+    done BOOLEAN DEFAULT false
 );
 
 CREATE TABLE lists_items
